@@ -10,11 +10,12 @@ class CmsAdm(admin.ModelAdmin):
     fields = ('cms_title', 'cms_text', 'cms_css', 'cms_img', 'get_img')
     readonly_fields = ('get_img',)
 
+
     def get_img(self, obj):
         if obj.cms_img:
             return mark_safe(f'<img src="{obj.cms_img.url}" width="80px")')
         else:
-            return 'Нет картинки'
+            return 'Нет картинки. Добавьте.'
 
     get_img.short_description = 'Миниатюра'
 
